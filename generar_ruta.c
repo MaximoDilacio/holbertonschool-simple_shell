@@ -23,8 +23,10 @@ char *generar_ruta(char *comando)
 	}
 	for (i = 0; path_dir[i] != NULL; i++)
 	{
-		if ((ruta_final = _asprintf(path_dir[i], comando))== NULL)
+		ruta_final = _asprintf(path_dir[i], comando);
+		if (ruta_final == NULL)
 		{
+
 			perror("fallo _asprintf\n");
 			free_tokens(path_dir);
 			return (NULL);
