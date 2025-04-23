@@ -19,51 +19,6 @@ char *verificar_ruta(char *comando)
 		return (strdup(comando));
 	return (NULL);
 }
-
-/**
- * generar_ruta - recorre path probando el comando,
- * si encuentra el comando, concatena ambas cadenas
- * @comando: char que almacena el contenido de la linea ingresada
- * Return: NULL si falla
-*/
-char *generar_ruta(char *comando)
-{
-	char *ruta_final = NULL;
-	char **path_dir = _getenv();
-	int i, j;
-
-	if (path_dir == NULL)
-	{
-		perror("fallo _getenv");
-		return (NULL);
-	}
-	for (i = 0; path_dir[i] != NULL; i++)
-	{
-		if ((ruta_final = _asprintf(path_dir[i], comando)) == NULL)
-		{
-			perror("fallo asprintf\n");
-			for (j = 0; path_dir[j] != NULL; j++)
-				free(path_dir[j]);
-			free(path_dir);
-			return (NULL);
-		}
-
-		if (access(ruta_final, X_OK) == 0)
-		{
-			for (j = 0; path_dir[j] != NULL; j++)
-				free(path_dir[j]);
-			free(path_dir);
-			return (ruta_final);
-		}
-		free(ruta_final);
-		ruta_final = NULL;
-	}
-	for (j = 0; path_dir[j] != NULL; j++)
-		free(path_dir[j]);
-	free(path_dir);
-	return (NULL);
-}
-
 /**
  * buscar_comando - funcion para corroborar si ruta es valida o no
  * si es valida, la retorna, si no lo es llama a la funcion generar_ruta
@@ -72,11 +27,7 @@ char *generar_ruta(char *comando)
 */
 char *buscar_comando(char *comando)
 {
-	char *ruta = verificar_ruta(comando);
-
-	if (ruta)
-		return (ruta);
-	return (generar_ruta(comando));
+	return (verificar_ruta(comando));
 }
 
 /**

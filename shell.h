@@ -11,5 +11,6 @@ int ejecucion(char **tokens);
 int proceso_hijo(char **tokens);
 char **_getenv(void);
 char *_asprintf(char *a, char *b);
+char *generar_ruta(char *comando);
 
 #endif
