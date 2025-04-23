@@ -13,8 +13,8 @@
 char *generar_ruta(char *comando)
 {
 	char *ruta_final = NULL;
-	char **parh_dir = _getenv();
-	int i, j;
+	char **path_dir = _getenv();
+	int i;
 
 	if (path_dir == NULL)
 	{

@@ -5,6 +5,7 @@
 
 extern char **environ;
 
+void free_tokens(char **tokens);
 ssize_t _getline(char **ptrline, size_t *size, FILE *stream);
 char **tokenised(char *comando);
 int ejecucion(char **tokens);
