@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "shell.h"
+
+
 /**
  * main - Funcion principal del programa con bucle infinito
  * Return: 0
@@ -36,7 +38,7 @@ int main(void)
 			free(tokens);
 			tokens = NULL;
 		}
-
+		free(tokens);
 		free(comando);
 		comando = NULL;
 	}

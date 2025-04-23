@@ -11,11 +11,6 @@ int contador(char *a)
 {
 	int i = 0;
 
-	if (a == NULL)
-	{
-		return (NULL);
-	}
-
 	while (a[i] != '\0')
 	{
 		i++;

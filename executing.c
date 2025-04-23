@@ -3,7 +3,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "preshell.h"
+#include "shell.h"
+
+extern char **environ;
 
 
 /**
@@ -31,11 +33,13 @@ char *generar_ruta(char *comando)
 	int i, j;
 
 	if (path_dir == NULL)
+	{
 		perror("fallo _getenv");
 		return (NULL);
-
+	}
 	for (i = 0; path_dir[i] != NULL; i++)
-		if (asprintf(&ruta_final, "%s/%s", path_dir[i], comando) == -1)
+	{
+		if ((ruta_final = _asprintf(path_dir[i], comando)) == NULL)
 		{
 			perror("fallo asprintf\n");
 			for (j = 0; path_dir[j] != NULL; j++)
@@ -44,7 +48,7 @@ char *generar_ruta(char *comando)
 			return (NULL);
 		}
 
-		if (acces(ruta_final, X_OK) == 0)
+		if (access(ruta_final, X_OK) == 0)
 		{
 			for (j = 0; path_dir[j] != NULL; j++)
 				free(path_dir[j]);
@@ -53,7 +57,7 @@ char *generar_ruta(char *comando)
 		}
 		free(ruta_final);
 		ruta_final = NULL;
-
+	}
 	for (j = 0; path_dir[j] != NULL; j++)
 		free(path_dir[j]);
 	free(path_dir);

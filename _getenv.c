@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include "shell.h"
 
+extern char **environ;
+
+
 /**
  * conteo - funcion para contar el largo de la cadena
  * @cadena: cadena para contar los caracteres
@@ -43,15 +46,19 @@ char **tokens(char *cadena)
 	tokens = malloc(sizeof(char *) * (num_t + 1));
 
 	if (tokens == NULL)
+	{
 		perror("malloc fallo");
 		free(cadena);
 		return (NULL);
+	}
 	copia = strdup(cadena);
 	if (copia == NULL)
+	{
 		perror("fallo dup");
 		free(cadena);
 		free(tokens);
 		return (NULL);
+	}
 	token = strtok(copia, ":");
 	while (token != NULL)
 	{
@@ -87,24 +94,34 @@ char **_getenv(void)
 	int i = 0, inicio = 0;
 
 	while (*environ != NULL)
+	{
 		if (strncmp(*environ, "PATH=", 5) == 0)
+		{
 			tmp = *environ;
-			brake;
+			break;
+		}
 		environ++;
+	}
 	if (tmp == NULL)
 		return (NULL);
 	while (tmp[i] != '\0')
+	{
 		if (tmp[i] == '=')
+		{
 			i++;
 			inicio = i;
+		}
 		i++;
+	}
 	i = i - inicio;
 	copia = malloc(sizeof(char) * (i + 1));
 	i = 0;
 	while (tmp[inicio] != '\0')
+	{
 		copia[i] = tmp[inicio];
 		i++;
 		inicio++;
+	}
 	copia[i] = '\0';
 	directorios = tokens(copia);
 	free(copia);

@@ -5,6 +5,8 @@
 #include <sys/wait.h>
 #include "shell.h"
 
+extern char **environ;
+
 /**
  * proceso_hijo - funcion para crear un proceso hijo para mantener
  * el proceso padre
@@ -20,12 +22,18 @@ int proceso_hijo(char **tokens)
 	pid = fork();
 
 	if (pid == -1)
+	{
 		perror("fallo fork");
 		return (-1);
+	}
 	else if (pid == 0)
+	{
 		ejecucion(tokens);
 		exit(EXIT_FAILURE);
+	}
 	else
+	{
 		waitpid(pid, &estado, 0);
 		return (0);
+	}
 }

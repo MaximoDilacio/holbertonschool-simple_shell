@@ -15,15 +15,17 @@ int conteo_tokens(char *comando)
 	char *copia = strdup(comando);
 
 	if (copia == NULL)
+	{
 		perror("fallo dup");
 		free(comando);
 		return (1);
-
+	}
 	token = strtok(copia, " ");
 	while (token != NULL)
+	{
 		nro_token++;
 		token = strtok(NULL, " ");
-
+	}
 	free(copia);
 	return (nro_token);
 }
