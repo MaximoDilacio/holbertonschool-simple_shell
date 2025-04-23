@@ -26,10 +26,14 @@ int proceso_hijo(char **tokens)
 		perror("fallo fork");
 		return (-1);
 	}
-	else if (pid == 0)
+	if (pid == 0)
 	{
-		ejecucion(tokens);
-		exit(EXIT_FAILURE);
+		if (tokens != NULL && tokens[0] != NULL)
+		{
+			ejecucion(tokens);
+			exit(EXIT_FAILURE);
+		}
+		exit(EXIT_SUCCESS);
 	}
 	else
 	{
