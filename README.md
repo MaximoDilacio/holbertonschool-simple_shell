@@ -53,14 +53,6 @@ Estos valores permiten al shell tomar decisiones, mostrar mensajes de error o co
   <h2>4. Salir del Shell</h2>
   <p>Para salir del shell, simplemente escribe <strong>exit</strong> y presiona <strong>Enter</strong>.</p>
 
-  <h2>Ejemplo de Uso:</h2>
-  <p><strong>$ ./simple_shell</strong></p>
-  <p><strong>$ ls</strong></p>
-  <p>archivo1.txt  archivo2.txt  carpeta/</p>
-  <p><strong>$ pwd</strong></p>
-  <p>/home/usuario</p>
-  <p><strong>$ exit</strong></p>
-
   <h2>Posibles errores:</h2>
   <p>Si ingresas un comando no reconocido, el shell mostrará un mensaje de error indicando que el comando no se encontró.</p>
 
@@ -71,14 +63,14 @@ Estos valores permiten al shell tomar decisiones, mostrar mensajes de error o co
 <p><strong>$ ./simple_shell</strong></p>
 
 <p>2. Ingresa el comando <strong>ls</strong> para listar los archivos:</p>
-<p><strong>simple_shell$ ls</strong></p>
+<p><strong>$ ls</strong></p>
 <p>Archivo1.txt  Archivo2.txt  Carpeta/</p>
 
 <p>3. Ingresa el comando <strong>pwd</strong> para ver el directorio actual:</p>
-<p><strong>simple_shell$ pwd</strong></p>
+<p><strong>$ pwd</strong></p>
 <p>/home/usuario</p>
 
 <p>4. Para salir, usa el comando <strong>exit</strong>:</p>
-<p><strong>simple_shell$ exit</strong></p>
+<p><strong>$ exit</strong></p>
 
 
