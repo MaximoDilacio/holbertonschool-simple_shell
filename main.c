@@ -1,12 +1,13 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
 #include "shell.h"
 
 
 /**
- * main - Funcion principal del programa con bucle infinito
- * Return: 0
+ * free_tokens - lbera un array de punteros
+ * @tokens: lista de punteros
 */
 void free_tokens(char **tokens)
 {
@@ -16,21 +17,27 @@ void free_tokens(char **tokens)
 		free(tokens[j]);
 	free(tokens);
 }
+/**
+ * main - Funcion principal del programa con bucle infinito
+ * Return: 0
+*/
 int main(void)
 {
 	char *comando = NULL;
 	size_t largo = 0;
 	ssize_t resultado;
 	char **tokens = NULL;
+	int _isatty = isatty(STDIN_FILENO);
 
 	while (1)
 	{
-		prompt();
-
+		if (_isatty != 0)
+			prompt();
 		resultado = getline(&comando, &largo, stdin);
 		if (resultado == -1)
 		{
-			printf("\n");
+			if (_isatty != 0)
+				printf("\n");
 			free(comando);
 			break;
 		}
