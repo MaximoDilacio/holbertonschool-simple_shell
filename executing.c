@@ -27,7 +27,10 @@ char *verificar_ruta(char *comando)
 */
 char *buscar_comando(char *comando)
 {
-	return (verificar_ruta(comando));
+	char *ruta = verificar_ruta(comando);
+	if (ruta)
+		return (ruta);
+	return (generar_ruta(comando));
 }
 
 /**
