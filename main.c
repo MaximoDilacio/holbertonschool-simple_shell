@@ -4,7 +4,14 @@
 #include <string.h>
 #include "shell.h"
 
+extern char **environ;
+void print_env(char **environ)
+{
+	int i = 0;
 
+	for (i = 0; environ[i] != NULL; i++)
+		printf("%s\n", environ[i]);
+}
 /**
  * free_tokens - lbera un array de punteros
  * @tokens: lista de punteros
@@ -51,9 +58,18 @@ int main(void)
 		tokens = tokenised(comando);
 		if (tokens != NULL)
 		{
-			proceso_hijo(tokens);
-			free_tokens(tokens);
-			tokens = NULL;
+			if (strcmp(tokens[0], "env") == 0)
+			{
+				print_env(environ);
+				free_tokens(tokens);
+				tokens = NULL;
+			}
+			else
+			{
+				proceso_hijo(tokens);
+				free_tokens(tokens);
+				tokens = NULL;
+			}
 		}
 		else
 		{
