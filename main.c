@@ -31,6 +31,7 @@ int main(void)
 		if (resultado == -1)
 		{
 			printf("\n");
+			free(comando);
 			break;
 		}
 		if (comando[resultado - 1] == '\n')
@@ -48,10 +49,9 @@ int main(void)
 			free_tokens(tokens);
 			tokens = NULL;
 		}
+		comando = NULL;
 	}
 	if (tokens != NULL)
 		free_tokens(tokens);
-	if (comando != NULL)
-		free(comando);
 	return (0);
 }

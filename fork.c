@@ -31,8 +31,10 @@ int proceso_hijo(char **tokens)
 		if (tokens != NULL && tokens[0] != NULL)
 		{
 			ejecucion(tokens);
+			free_tokens(tokens);
 			exit(EXIT_FAILURE);
 		}
+		free_tokens(tokens);
 		exit(EXIT_SUCCESS);
 	}
 	else

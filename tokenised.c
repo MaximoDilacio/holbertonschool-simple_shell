@@ -77,5 +77,6 @@ char **tokenised(char *comando)
 	}
 	tokens[i] = NULL;
 	free(copia);
+	free(comando);
 	return (tokens);
 }
