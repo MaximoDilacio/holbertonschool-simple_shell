@@ -25,7 +25,7 @@ int main(void)
 
 	while (1)
 	{
-		printf("$ ");
+		prompt();
 
 		resultado = getline(&comando, &largo, stdin);
 		if (resultado == -1)
