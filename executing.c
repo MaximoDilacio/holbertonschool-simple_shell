@@ -1,12 +1,8 @@
-#define _GNU_SOURCE
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include "shell.h"
-
-extern char **environ;
-
 
 /**
  * verificar_ruta - Funcion para verificar si la ruta es absoluta
@@ -28,6 +24,7 @@ char *verificar_ruta(char *comando)
 char *buscar_comando(char *comando)
 {
 	char *ruta = verificar_ruta(comando);
+
 	if (ruta)
 		return (ruta);
 	return (generar_ruta(comando));

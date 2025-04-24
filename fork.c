@@ -5,7 +5,6 @@
 #include <sys/wait.h>
 #include "shell.h"
 
-extern char **environ;
 
 /**
  * proceso_hijo - funcion para crear un proceso hijo para mantener

@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include "shell.h"
 
-extern char **environ;
-
-
 /**
  * conteo - funcion para contar el largo de la cadena
  * @cadena: cadena para contar los caracteres
@@ -44,7 +41,6 @@ char **tokens(char *cadena)
 	int j, i = 0, num_t = conteo(cadena);
 
 	tokens = malloc(sizeof(char *) * (num_t + 1));
-
 	if (tokens == NULL)
 	{
 		perror("malloc fallo");
@@ -76,7 +72,6 @@ char **tokens(char *cadena)
 		token = strtok(NULL, ":");
 		i++;
 	}
-
 	tokens[i] = NULL;
 	free(token);
 	free(copia);

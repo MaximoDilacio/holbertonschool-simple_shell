@@ -51,8 +51,7 @@ char **tokenised(char *comando)
 	}
 	copia = strdup(comando);
 	if (copia == NULL)
-	{
-		perror("fallo dup");
+	{	perror("fallo dup");
 		free(comando);
 		free(tokens);
 		return (NULL);
@@ -62,8 +61,7 @@ char **tokenised(char *comando)
 	{
 		tokens[i] = strdup(token);
 		if (tokens[i] == NULL)
-		{
-			perror("fallo dup");
+		{	perror("fallo dup");
 			for (j = 0; j < i; j++)
 				free(tokens[j]);
 

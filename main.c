@@ -4,7 +4,10 @@
 #include <string.h>
 #include "shell.h"
 
-extern char **environ;
+/**
+ * print_env - Imprime el entorno
+ * @environ: Entorno
+*/
 void print_env(char **environ)
 {
 	int i = 0;
@@ -46,39 +49,28 @@ int main(void)
 			if (_isatty != 0)
 				printf("\n");
 			free(comando);
-			break;
-		}
+			break; }
 		if (comando[resultado - 1] == '\n')
 			comando[resultado - 1] = '\0';
 		if (strcmp(comando, "exit") == 0)
-		{
-			free(comando);
-			break;
-		}
+		{	free(comando);
+			break; }
 		tokens = tokenised(comando);
 		if (tokens != NULL)
 		{
 			if (strcmp(tokens[0], "env") == 0)
-			{
-				print_env(environ);
+			{	print_env(environ);
 				free_tokens(tokens);
-				tokens = NULL;
-			}
+				tokens = NULL; }
 			else
-			{
-				proceso_hijo(tokens);
+			{	proceso_hijo(tokens);
 				free_tokens(tokens);
-				tokens = NULL;
-			}
+				tokens = NULL; }
 		}
 		else
-		{
-			free_tokens(tokens);
-			tokens = NULL;
-		}
-		comando = NULL;
-	}
+		{	free_tokens(tokens);
+			tokens = NULL; }
+		comando = NULL; }
 	if (tokens != NULL)
 		free_tokens(tokens);
-	return (0);
-}
+	return (0); }

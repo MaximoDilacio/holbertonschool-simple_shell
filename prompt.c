@@ -5,7 +5,7 @@
  * prompt - imprime el prompt en cada iteracion
  */
 
-void prompt()
+void prompt(void)
 {
 	printf("$ ");
 }
