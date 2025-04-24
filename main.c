@@ -43,7 +43,11 @@ int main(void)
 		}
 		if (comando[resultado - 1] == '\n')
 			comando[resultado - 1] = '\0';
-
+		if (strcmp(comando, "exit") == 0)
+		{
+			free(comando);
+			break;
+		}
 		tokens = tokenised(comando);
 		if (tokens != NULL)
 		{
