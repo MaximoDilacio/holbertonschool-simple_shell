@@ -16,27 +16,6 @@ void print_env(char **environ)
 		printf("%s\n", environ[i]);
 }
 /**
- * procesar_comando - procesa y limpia el comando de espacios
- * @comando: comando a procesar
- *
- * Return: comando limpio
- */
-char *procesar_comando(char *comando)
-{
-	size_t len = strlen(comando);
-	char *inicio = comando, *fin = comando + (len - 1);
-
-	if (len > 0 && comando[len - 1] == '\n')
-		comando[len - 1] = '\0';
-	while (*inicio == ' ')
-		inicio++;
-	while (fin > inicio && *fin == ' ')
-		fin--;
-	*(fin + 1) = '\0';
-	
-	return (inicio);
-}
-/**
  * free_tokens - lbera un array de punteros
  * @tokens: lista de punteros
 */
@@ -71,10 +50,13 @@ int main(void)
 				printf("\n");
 			free(comando);
 			break; }
-		comando = procesar_comando(comando);
+		if (comando[resultado - 1] == '\n')
+			comando[resultado - 1] = '\0';
 		tokens = tokenised(comando);
 		if (tokens != NULL)
 		{
+			if (strcmp(tokens[0], "exit") == 0)
+				break;
 			if (strcmp(tokens[0], "env") == 0)
 			{	print_env(environ);
 				free_tokens(tokens);
