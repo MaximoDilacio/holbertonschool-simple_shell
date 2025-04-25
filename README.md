@@ -34,7 +34,7 @@ Estos valores permiten al shell tomar decisiones, mostrar mensajes de error o co
 
   <h2>1. Compilación</h2>
   <p>Primero, necesitas compilar el código fuente. Abre una terminal y usa el siguiente comando para compilar los archivos fuente:</p>
-  <p><strong>gcc -o simple_shell main.c executing.c fork.c tokenised.c _getenv.c _asprintf.c</strong></p>
+  <p><strong>gcc main.c executing.c fork.c tokenised.c _getenv.c _asprintf.c generar_ruta.c prompt.c -o simple_shell </strong></p>
   <p>Esto generará un archivo ejecutable llamado <strong>simple_shell</strong>.</p>
 
   <h2>2. Ejecutar el Shell</h2>
