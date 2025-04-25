@@ -64,10 +64,9 @@ char **tokenised(char *comando)
 		{	perror("fallo dup");
 			for (j = 0; j < i; j++)
 				free(tokens[j]);
-
+			free(comando);
 			free(tokens);
 			free(copia);
-			free(comando);
 			return (NULL);
 		}
 		token = strtok(NULL, " ");

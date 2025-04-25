@@ -33,7 +33,7 @@ char *procesar_comando(char *comando)
 	while (fin > inicio && *fin == ' ')
 		fin--;
 	*(fin + 1) = '\0';
-
+	
 	return (inicio);
 }
 /**
@@ -86,7 +86,8 @@ int main(void)
 		}
 		else
 		{	free_tokens(tokens);
-			tokens = NULL; }
+			free(comando);}
+		tokens = NULL;
 		comando = NULL; }
 	if (tokens != NULL)
 		free_tokens(tokens);
